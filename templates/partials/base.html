@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My App{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <style>
+        nav {
+          background-color: #333;
+          padding: 1rem;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          left: 0;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+        }
+      
+        .nav-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+        }
+      
+        .nav-item {
+          margin: 0 1rem;
+        }
+      
+        .nav-link {
+          color: #fff;
+          text-decoration: none;
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+          border: none;
+          border-radius: 4px;
+          background-color: #007bff;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          display: inline-block;
+          text-align: center;
+        }
+      
+        .nav-link:hover {
+          background-color: #0056b3;
+        }
+      
+        .nav-link:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px #0056b3;
+        }
+      </style>
+      
+    </style>
+    
+    {% block styles %}{% endblock %} {% block scripts %}{% endblock %}
+  </head>
+  <body>
+    {% include 'partials/nav.html' %}
+
+    <div>{% block content %}{% endblock %}</div>
+    {% block scripts_body %}{% endblock %}
+  </body>
+</html>

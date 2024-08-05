@@ -1,0 +1,40 @@
+<nav>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" id="nav-link-logout">Logout</button>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const signOutButton = document.querySelector("#nav-link-logout");
+
+    if (signOutButton) {
+      signOutButton.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        fetch("/logout", {
+          method: "POST",
+          credentials: "include",
+        })
+          .then((response) => {
+            if (response.ok) {
+              window.location.href = "/login";
+            } else {
+              console.error("Logout Failed");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+    }
+  });
+</script>
